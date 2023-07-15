@@ -5,7 +5,7 @@ import "./navbar.css";
 export class navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div className="container-fluid">
           <div className="d-flex">
             <img
