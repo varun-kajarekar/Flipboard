@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Logo from "./logo.svg";
 import "./navbar.css";
-import {Link} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 
 export class navbar extends Component {
   render() {
@@ -47,9 +47,9 @@ export class navbar extends Component {
               </li>
               <Link to="/TECHNOLOGY" style={{textDecoration:"none"}}>
               <li className="nav-item">
-                <span className="nav-link active">
+                <button className="nav-link active">
                   TECHNOLOGY
-                </span>
+                </button>
               </li>
               </Link>
               <Link to="/HEALTH" style={{textDecoration:"none"}}>
@@ -63,6 +63,14 @@ export class navbar extends Component {
               <li className="nav-item">
                 <span className="nav-link active">
                   SPORTS
+                </span>
+              </li>
+              </Link>
+
+              <Link to="/BUSINESS" style={{textDecoration:"none"}}>
+              <li className="nav-item">
+                <span className="nav-link active">
+                BUSINESS
                 </span>
               </li>
               </Link>

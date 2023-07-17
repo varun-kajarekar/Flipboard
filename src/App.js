@@ -6,48 +6,50 @@ import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default class App extends Component {
+  api_key = process.env.REACT_APP_NEWS_API
+
   render() {
+
     return (
       <>
         <BrowserRouter>
           <Navbar />
-          
           <Routes>
             <Route
               exact path="/SPORTS"
               element={
-                <News Durl="https://newsapi.org/v2/top-headlines?country=in&apiKey=806923e9dcde4834a58f2cc9ff6c784f&category=sports" />
+                <News  key="SPORTS" catagory="sports" api = {this.api_key}/>
               }
             />
             <Route
               exact path="/ENTERTAINMENT"
               element={
-                <News Durl="https://newsapi.org/v2/top-headlines?country=in&apiKey=806923e9dcde4834a58f2cc9ff6c784f&category=entertainment" />
+                <News  key="ENTERTAINMENT" catagory="entertainment" api = {this.api_key}/>
               }
             />
-            <Route
+            <Route 
               exact path="/TECHNOLOGY"
               element={
-                <News Durl="https://newsapi.org/v2/top-headlines?country=in&apiKey=806923e9dcde4834a58f2cc9ff6c784f&category=technology" />
+                <News  key="TECHNOLOGY" catagory="technology" api = {this.api_key}/>
               }
             />
             <Route
               exact path="/HEALTH"
               element={
-                <News Durl="https://newsapi.org/v2/top-headlines?country=in&apiKey=806923e9dcde4834a58f2cc9ff6c784f&category=health" />
+                <News  key="HEALTH" catagory="health" api = {this.api_key}/>
               }
             />
             <Route
               exact path="/BUSINESS"
               element={
-                <News Durl="https://newsapi.org/v2/top-headlines?country=in&apiKey=806923e9dcde4834a58f2cc9ff6c784f&category=business" />
+                <News  key="BUSINESS" catagory="business" api = {this.api_key}/>
               }
             />
             <Route
 
               exact path="/"
               element={
-                <News Durl="https://newsapi.org/v2/top-headlines?country=in&apiKey=806923e9dcde4834a58f2cc9ff6c784f" />
+                <News  key="HOME" catagory="general" api = {this.api_key}/>
               }
             />
           </Routes>

@@ -14,16 +14,15 @@ export class news extends Component {
   }
 
   async componentDidMount() {
-    let {Durl} = this.props;
+    let Durl = 'https://newsapi.org/v2/top-headlines?country=in&apiKey='+this.props.api+'&category='+this.props.catagory
     let data = await fetch(Durl);
     let parsedata = await data.json();
     this.setState({ article: parsedata.articles, loading: false });
   }
 
   Read_more = async () => {
-    let {Durl} = this.props;
     var pn = this.state.pageSize + 5;
-    let url =Durl+"&pageSize=" +pn;
+    let url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey='+this.props.api+'&category='+this.props.catagory+'&pageSize='+pn
     let data = await fetch(url);
     let parsedata = await data.json();
     this.setState({
