@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React ,{ Component } from "react";
 import NewsItem from "./newsitem";
 
 export class news extends Component {
@@ -6,16 +6,14 @@ export class news extends Component {
     super();
     
     this.state = {
-
       article: [],
       loading: true,
       pageSize: 20,
     };
   }
-
   async componentDidMount() {
-    let Durl = 'https://newsapi.org/v2/top-headlines?country=in&apiKey='+this.props.api+'&category='+this.props.catagory
-    let data = await fetch(Durl);
+    let Doc_url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey='+this.props.api+'&category='+this.props.catagory
+    let data = await fetch(Doc_url);
     let parsedata = await data.json();
     this.setState({ article: parsedata.articles, loading: false });
   }
@@ -32,7 +30,6 @@ export class news extends Component {
     });
   };
   render() {
-
     if (this.state.loading) {
       return (
         <div className="d-flex justify-content-center m-5">
@@ -44,11 +41,11 @@ export class news extends Component {
         </div>
       );
     }
+
     return (
       <>
-      
       <div className="container">
-  <div className="row mx-5">
+  <div className="row ">
           {this.state.article.map((e) => {
             return (
               <div className="col-md-4 my-4" key={e.title}>
@@ -66,9 +63,10 @@ export class news extends Component {
 
         <div className="d-flex justify-content-center m-5">
           <button
+
             type="button"
             className="btn btn-outline-danger bg-danger text-white"
-            onClick={this.Read_more}
+            onClick={this.Read_more}            
           >
             Read more
           </button>

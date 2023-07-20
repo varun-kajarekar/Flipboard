@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import Logo from "./logo.svg";
 import "./navbar.css";
-import {Link,useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 export class navbar extends Component {
+
+
+
+
   render() {
+    
     return (
+      <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div className="container-fluid">
         <Link to="/" style={{textDecoration:"none"}}>
@@ -75,12 +81,15 @@ export class navbar extends Component {
               </li>
               </Link>
             </ul>
-            <form className="d-flex" role="search">
+            {/* <form className="d-flex" role="search">
               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search Flipboard"
                 aria-label="Search"
+                onChange={(e)=>{
+                  this.setState({custom_query:e.target.value})
+                }}
               />
               <button
                 className="btn btn-outline-danger bg-danger text-white"
@@ -88,10 +97,11 @@ export class navbar extends Component {
               >
                 Search
               </button>
-            </form>
+            </form> */}
           </div>
         </div>
       </nav>
+      </>
     );
   }
 }

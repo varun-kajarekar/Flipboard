@@ -1,7 +1,6 @@
 import "./App.css";
 import Navbar from "./component/navbar";
 import News from "./component/news";
-
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -52,6 +51,7 @@ export default class App extends Component {
                 <News  key="HOME" catagory="general" api = {this.api_key}/>
               }
             />
+            
           </Routes>
         </BrowserRouter>
       </>
