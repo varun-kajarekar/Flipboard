@@ -12,7 +12,3 @@ li :hover{
 /* button::cue{
     background-color: black;
 } */
-button:active{
-    background-color: #ff0000;
-    
-}
