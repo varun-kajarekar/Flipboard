@@ -9,3 +9,10 @@ li :hover{
     background-color: #ff00000d;
     border-radius: 2em;
 }
+/* button::cue{
+    background-color: black;
+} */
+button:active{
+    background-color: #ff0000;
+    
+}

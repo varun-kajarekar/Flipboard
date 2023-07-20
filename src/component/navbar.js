@@ -49,7 +49,7 @@ const navbar = () => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item mx-1">
               <Link to="/Entertainment" style={{ textDecoration: "none" }}>
-                <span className="nav-link active">ENTERTAINMENT</span>
+                <button className="nav-link active">ENTERTAINMENT</button>
               </Link>
             </li>
             <li className="nav-item mx-1">
