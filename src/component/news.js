@@ -1,36 +1,31 @@
-import React ,{ Component } from "react";
+import React ,{ useEffect,useState } from "react";
 import NewsItem from "./newsitem";
 
-export class news extends Component {
-  constructor() {
-    super();
-    
-    this.state = {
-      article: [],
-      loading: true,
-      pageSize: 20,
-    };
-  }
-  async componentDidMount() {
-    let Doc_url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey='+this.props.api+'&category='+this.props.catagory
-    let data = await fetch(Doc_url);
-    let parsedata = await data.json();
-    this.setState({ article: parsedata.articles, loading: false });
-  }
 
-  Read_more = async () => {
-    var pn = this.state.pageSize + 5;
-    let url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey='+this.props.api+'&category='+this.props.catagory+'&pageSize='+pn
-    let data = await fetch(url);
-    let parsedata = await data.json();
-    this.setState({
-      article: parsedata.articles,
-      loading: false,
-      pageSize: this.state.pageSize + 5,
-    });
-  };
-  render() {
-    if (this.state.loading) {
+const news =(props)=>{
+    const [article, setArticle] = useState([]);
+    const [loading, setLoading] = useState(true)
+    const [pageSize, setPageSize] = useState(20)
+
+    const updatNews=async ()=>{
+      let Document_url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey='+props.api+'&category='+props.catagory+'&pageSize='+pageSize;
+      let data = await fetch(Document_url);
+      let parsedata = await data.json();
+      setArticle(parsedata.articles);
+      setLoading(false)
+    }
+
+    const Read_more = async () => {
+      setPageSize(pageSize+5);
+      updatNews();
+    }
+
+
+    useEffect(() => {
+      updatNews();
+    }, [])
+
+    if (loading) {
       return (
         <div className="d-flex justify-content-center m-5">
           <div
@@ -46,7 +41,7 @@ export class news extends Component {
       <>
       <div className="container">
   <div className="row ">
-          {this.state.article.map((e) => {
+          {article.map((e) => {
             return (
               <div className="col-md-4 my-4" key={e.title}>
                 <NewsItem
@@ -66,7 +61,7 @@ export class news extends Component {
 
             type="button"
             className="btn btn-outline-danger bg-danger text-white"
-            onClick={this.Read_more}            
+            onClick={Read_more}            
           >
             Read more
           </button>
@@ -74,7 +69,6 @@ export class news extends Component {
       </div>
       </>
     );
-  }
 }
 
 export default news;
