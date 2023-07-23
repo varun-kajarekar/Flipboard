@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NewsItem from "./newsitem";
-
 import Loading from "./loading.js";
+import DA from './data.js'
+
 
 const news = (props) => {
+  
+  
+
   const [article, setArticle] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pageSize, setPageSize] = useState(20);
@@ -17,10 +21,18 @@ const news = (props) => {
       props.catagory +
       "&pageSize=" +
       pageSize;
-    let data = await fetch(Document_url);
-    let parsedata = await data.json();
-    setArticle(parsedata.articles);
-    setLoading(false);
+    fetch(Document_url)
+        .then(response => response.json())
+        .then(data =>{
+          setArticle(data.articles);
+          setLoading(false);
+        })
+        .catch(()=>{
+          setcatagory_name("API_ERROR..... DEMO NEWS");
+          setArticle(DA())
+          setLoading(false);
+        })
+    
     if (props.catagory != "general") {
       setcatagory_name(props.catagory);
     } else {
@@ -35,11 +47,12 @@ const news = (props) => {
 
   useEffect(() => {
     updatNews();
-    Read_more();
   }, []);
 
   if (loading) {
-    return <Loading catagoryname={catagory_name} />;
+    return (
+      <Loading catagoryname = {catagory_name}/>
+    );
   }
   return (
     <>
@@ -47,7 +60,9 @@ const news = (props) => {
         <h6 className="mt-4 fw-bolder">{catagory_name.toUpperCase()}</h6>
 
         <div className="row">
-          {article.map((e) => {
+          {
+          
+          article.map((e) => {
             return (
               <div className="col-md-4 my-4" key={e.title}>
                 <NewsItem

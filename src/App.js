@@ -6,11 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   const api_key = process.env.REACT_APP_NEWS_API;
-
   return (
     <BrowserRouter>
       <Navbar />
-
       <Routes>
         <Route
           exact
