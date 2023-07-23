@@ -9,7 +9,7 @@ const newsitem = (props) => {
     : (iurl = "https://i.ytimg.com/vi/LQ18gp18xG0/maxresdefault.jpg");
 
   return (
-    <div className="card" style={{ width: "23rem", height: "40rem" }}>
+    <div className="card" aria-hidden="true">
       <a className="navbar-brand m-3 " href="#">
         {/* Company Logo  */}
 

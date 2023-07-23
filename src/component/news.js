@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NewsItem from "./newsitem";
 
+import Loading from "./loading.js";
+
 const news = (props) => {
   const [article, setArticle] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pageSize, setPageSize] = useState(20);
-  const [catagory_name, setcatagory_name] = useState("");
+  const [catagory_name, setcatagory_name] = useState("Loading");
 
   const updatNews = async () => {
     let Document_url =
@@ -33,25 +35,18 @@ const news = (props) => {
 
   useEffect(() => {
     updatNews();
+    Read_more();
   }, []);
 
   if (loading) {
-    return (
-      <div className="d-flex justify-content-center m-5">
-        <div
-          className="spinner-grow "
-          style={{ width: "4rem", height: "4rem" }}
-          role="status"
-        ></div>
-      </div>
-    );
+    return <Loading catagoryname={catagory_name} />;
   }
   return (
     <>
       <div className="container">
         <h6 className="mt-4 fw-bolder">{catagory_name.toUpperCase()}</h6>
 
-        <div className="row ">
+        <div className="row">
           {article.map((e) => {
             return (
               <div className="col-md-4 my-4" key={e.title}>
